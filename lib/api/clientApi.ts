@@ -60,8 +60,7 @@ export const login = async (loginRequest: LoginRequest) => {
 }
 
 export const logout = async(): Promise<void> => {
-  const response = await api.post("/auth/logout");
-  return response.data;
+   await api.post("/auth/logout");
 }
 
 export const checkSession = async () => {

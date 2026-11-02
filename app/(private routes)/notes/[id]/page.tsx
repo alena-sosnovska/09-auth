@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import Loader from '@/app/loading';
-import { fetchNoteById } from '@/lib/api/clientApi';
+import { fetchNoteById } from '@/lib/api/serverApi';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import NoteDetailsClient from './NoteDetails.client';
 import { Metadata } from 'next';
@@ -10,7 +10,7 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps) : Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const note = await fetchNoteById(id);
   return {
